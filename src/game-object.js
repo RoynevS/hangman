@@ -44,7 +44,10 @@ function gameObject(word) {
 }
 
 function setStartingEncryption(word) {
-  return word.split("").map(() => "_");
+  return word.split("").map((element) => {
+    if (element === " ") return element;
+    return "_";
+  });
 }
 
 export { gameObject };
