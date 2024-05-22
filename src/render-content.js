@@ -1,5 +1,9 @@
-import { setElementAttributes, appendChildrenToElement } from "./utils";
-import { gameObject } from "./game-object";
+import {
+  setElementAttributes,
+  appendChildrenToElement,
+  removeAllChildren,
+} from "./utils";
+import { gameController } from "./game-controller";
 
 function renderUserWord() {
   const main = document.querySelector("main");
@@ -37,16 +41,16 @@ function renderUserWord() {
 function changeToGame(event) {
   if (event.target.className === "user-word-btn") {
     const word = document.querySelector(".user-word-input").value;
-    clearSite();
-    renderGame(word);
+    removeAllChildren("main");
+    gameController(word);
     return;
   }
-  clearSite();
-  renderGame(404);
+  removeAllChildren("main");
+  gameController(404);
 }
 
 function changeToSelectScreen() {
-  clearSite();
+  removeAllChildren("main");
   renderUserWord();
   renderRandomWord();
 }
@@ -70,66 +74,4 @@ function renderRandomWord() {
   main.appendChild(rightDiv);
 }
 
-function renderGame(word) {
-  const main = document.querySelector("main");
-  const gridContainer = document.createElement("div");
-  const wordContainer = document.createElement("div");
-  const gallowContainer = document.createElement("div");
-  const inputContainer = document.createElement("div");
-
-  renderButtons(inputContainer);
-
-  appendChildrenToElement(gridContainer, [
-    wordContainer,
-    gallowContainer,
-    inputContainer,
-  ]);
-  main.appendChild(gridContainer);
-}
-
-function renderButtons(parent) {
-  const alphabet = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
-  alphabet.forEach((char) => {
-    const inputBtn = document.createElement("button");
-    inputBtn.textContent = char;
-    setElementAttributes(inputBtn, {
-      class: "input-btn",
-      "data-char": char,
-    });
-    parent.appendChild(inputBtn);
-  });
-}
-
-function clearSite() {
-  const main = document.querySelector("main");
-  main.replaceChildren();
-}
-
-export { renderUserWord, renderRandomWord, clearSite };
+export { renderUserWord, renderRandomWord };
