@@ -11,7 +11,7 @@ function gameObject(word) {
   const getWordState = () => wordState;
 
   const checkCharInWord = (char) => {
-    if (splitWord.includes(char)) {
+    if (splitWord.includes(char) || splitWord.includes(char.toUpperCase())) {
       setWordState(char);
     } else {
       increaseTries();
@@ -20,7 +20,8 @@ function gameObject(word) {
 
   const setWordState = (char) => {
     splitWord.forEach((element, index) => {
-      if (element === char) wordState[index] = char;
+      if (element === char || element === char.toUpperCase())
+        wordState[index] = element;
     });
   };
 
