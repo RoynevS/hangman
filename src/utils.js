@@ -8,4 +8,9 @@ function appendChildrenToElement(parent, children) {
   children.forEach((child) => parent.appendChild(child));
 }
 
-export { setElementAttributes, appendChildrenToElement };
+function removeAllChildren(element) {
+  const parent = document.querySelector(element);
+  parent.replaceChildren();
+}
+
+export { setElementAttributes, appendChildrenToElement, removeAllChildren };
