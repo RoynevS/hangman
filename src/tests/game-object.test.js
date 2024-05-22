@@ -12,6 +12,23 @@ describe("", () => {
     expect(game.getWordState()).toEqual(["_", "_", "_", "_", "_", "_", "_"]);
   });
 
+  test("return starting state multi words", () => {
+    const newGame = gameObject("hello world");
+    expect(newGame.getWordState()).toEqual([
+      "_",
+      "_",
+      "_",
+      "_",
+      "_",
+      " ",
+      "_",
+      "_",
+      "_",
+      "_",
+      "_",
+    ]);
+  });
+
   test("check for char in word", () => {
     game.checkCharInWord("t");
     expect(game.getWordState()).toEqual(["t", "_", "_", "_", "_", "t", "_"]);
