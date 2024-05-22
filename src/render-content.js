@@ -1,4 +1,5 @@
 import { setElementAttributes, appendChildrenToElement } from "./utils";
+import { gameObject } from "./game-object";
 
 function renderUserWord() {
   const main = document.querySelector("main");
