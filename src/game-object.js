@@ -1,4 +1,4 @@
-function gameController(word) {
+function gameObject(word) {
   let tries = 0;
 
   const getTries = () => tries;
@@ -47,4 +47,4 @@ function setStartingEncryption(word) {
   return word.split("").map(() => "_");
 }
 
-export { gameController };
+export { gameObject };
