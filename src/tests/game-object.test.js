@@ -1,13 +1,8 @@
-import { gameController } from "../game-controller";
+import { gameObject } from "../game-object";
 
 describe("", () => {
   const word = "tribute";
-  const game = gameController(word);
-
-  // test("able to increase and get the number of tries", () => {
-  //   game.increaseTries();
-  //   expect(game.getTries()).toBe(1);
-  // });
+  const game = gameObject(word);
 
   test("return word", () => {
     expect(game.getWord()).toBe("tribute");
@@ -32,7 +27,7 @@ describe("", () => {
   });
 
   test("check for game end by getting the answer", () => {
-    const newGame = gameController(word);
+    const newGame = gameObject(word);
     newGame.checkCharInWord("t");
     newGame.checkCharInWord("r");
     newGame.checkCharInWord("i");
@@ -43,7 +38,7 @@ describe("", () => {
   });
 
   test("check for game end by not having tries left", () => {
-    const newGame = gameController(word);
+    const newGame = gameObject(word);
     newGame.checkCharInWord("a");
     newGame.checkCharInWord("c");
     newGame.checkCharInWord("d");
