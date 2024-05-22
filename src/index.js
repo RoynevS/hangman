@@ -1,3 +1,11 @@
+import { renderUserWord, renderRandomWord, clearSite } from "./render-content";
+
 import "./styles/style.css";
 
-console.log("Template Test");
+function renderSite() {
+  clearSite();
+  renderUserWord();
+  renderRandomWord();
+}
+
+renderSite();
